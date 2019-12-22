@@ -7,4 +7,3 @@ object PizzaSizeTable : Table("pizza_size") {
     val name = varchar("name", 55)
     val additionalPrize = double("additionalPrize")
 }
-gi
