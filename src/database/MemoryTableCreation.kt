@@ -4,6 +4,7 @@ import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.openpizza.order.model.model.OrderTable
+import org.openpizza.pizza.item.model.PizzaItemTable
 import org.openpizza.pizza.sizes.model.PizzaSizeTable
 import org.openpizza.pizza.tops.model.TopsTable
 import org.openpizza.pizza.types.model.PizzaTypeTable
@@ -16,6 +17,7 @@ object MemoryTableCreation {
             SchemaUtils.create(PizzaTypeTable)
             SchemaUtils.create(TopsTable)
             SchemaUtils.create(OrderTable)
+            SchemaUtils.create(PizzaItemTable)
             createSamplePizzaSizes()
             createSamplePizzaTypes()
             createSamplePizzaTops()
