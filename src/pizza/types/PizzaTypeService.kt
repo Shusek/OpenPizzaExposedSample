@@ -2,6 +2,7 @@ package org.openpizza.pizza.types
 
 import database.DatabaseFactory.dbQuery
 import org.jetbrains.exposed.sql.*
+import org.openpizza.pizza.item.model.PizzaItemTable
 import org.openpizza.pizza.types.model.NewPizzaType
 import org.openpizza.pizza.types.model.PizzaTypeRecord
 import org.openpizza.pizza.types.model.PizzaTypeTable
@@ -9,11 +10,11 @@ import org.openpizza.pizza.types.model.PizzaTypeTable
 class PizzaTypeService {
 
     suspend fun getAllPizzaTypes(): List<PizzaTypeRecord> = dbQuery {
-        PizzaTypeTable.selectAll().map { toPizzaTypeRecord(it) }
+        PizzaItemTable.selectAll().map { toPizzaTypeRecord(it) }
     }
 
     suspend fun getPizzaType(id: Int): PizzaTypeRecord? = dbQuery {
-        PizzaTypeTable.select {
+        PizzaItemTable.select {
             (PizzaTypeTable.id eq id)
         }.mapNotNull { toPizzaTypeRecord(it) }
             .singleOrNull()
@@ -21,9 +22,8 @@ class PizzaTypeService {
 
     suspend fun updatePizzaType(id: Int, updatePizzaType: NewPizzaType): PizzaTypeRecord? {
         dbQuery {
-            PizzaTypeTable.update({ PizzaTypeTable.id eq id }) {
-                it[name] = updatePizzaType.name
-                it[basePrize] = updatePizzaType.basePrize
+            PizzaItemTable.update({ PizzaItemTable.id eq id }) {
+
             }
         }
         return getPizzaType(id)
@@ -48,8 +48,10 @@ class PizzaTypeService {
 
     private fun toPizzaTypeRecord(row: ResultRow): PizzaTypeRecord =
         PizzaTypeRecord(
-            id = row[PizzaTypeTable.id],
-            name = row[PizzaTypeTable.name],
-            basePrize = row[PizzaTypeTable.basePrize]
+            id = row[PizzaItemTable.id],
+            image = row[PizzaItemTable.image],
+            description = row[PizzaItemTable.description],
+            title = row[PizzaItemTable.title],
+            prize = row[PizzaItemTable.prize]
         )
 }

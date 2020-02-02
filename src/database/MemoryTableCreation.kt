@@ -18,45 +18,46 @@ object MemoryTableCreation {
             SchemaUtils.create(TopsTable)
             SchemaUtils.create(OrderTable)
             SchemaUtils.create(PizzaItemTable)
-            createSamplePizzaSizes()
-            createSamplePizzaTypes()
-            createSamplePizzaTops()
+            createSamplePizzaItem()
         }
     }
 
-    private fun createSamplePizzaSizes() {
-        PizzaSizeTable.insert {
-            it[name] = "Normal"
-            it[additionalPrize] = 0.00
+    private fun createSamplePizzaItem() {
+        PizzaItemTable.insert {
+            it[title] = "Margarita"
+            it[description] =
+                "Otóż według najbardziej znanej legendy królowa włoskich pizz zawdzięcza swoje imię królowej Marghericie.\n" +
+                        "\n" +
+                        "Podobno było tak: W 1889 roku piękna i kochana przez lud królowa Włoch, Margherita di Savoia (po naszemu: Małgorzata Sabaudzka) i jej mąż król Umberto I spędzali wakacje w Neapolu. Królowa koniecznie chciała spróbować pizzy, wszakże miasto słynęło z tego dania w całym kraju.\n" +
+                        "\n" +
+                        "Przygotowanie potrawy dla powierzono najsłynniejszemu piekarzowi w okolicy: Raffaele Esposito, z najlepszej neapolitańskiej pizzerii: Brandi (założonej w 1780 roku!).\n" +
+                        "\n" +
+                        "Raffaele przygotował dla królowej pizzę, której podstawowymi składnikami były pomidory, ser mozzarella i bazylia. Składniki miały symbolizować barwy flagi włoskiej: zieleń, biel i czerwień. Na cześć królowej nazwał danie jej imieniem: Margherita."
+            it[prize] = 33.00
+            it[image] = "image1.jpg"
         }
 
-        PizzaSizeTable.insert {
-            it[name] = "XL"
-            it[additionalPrize] = 15.00
-        }
-    }
-
-    private fun createSamplePizzaTypes() {
-        PizzaTypeTable.insert {
-            it[name] = "Normal"
-            it[basePrize] = 22.00
-        }
-
-        PizzaTypeTable.insert {
-            it[name] = "Margarita"
-            it[basePrize] = 35.00
-        }
-    }
-
-    private fun createSamplePizzaTops() {
-        PizzaSizeTable.insert {
-            it[name] = "Normal"
-            it[additionalPrize] = 0.00
+        PizzaItemTable.insert {
+            it[title] = "Salami"
+            it[description] =
+                "Otóż według najbardziej znanej legendy królowa włoskich pizz zawdzięcza swoje imię królowej Marghericie.\n" +
+                        "\n" +
+                        "Podobno było tak: W 1889 roku piękna i kochana przez lud królowa Włoch, Margherita di Savoia (po naszemu: Małgorzata Sabaudzka) i jej mąż król Umberto I spędzali wakacje w Neapolu. Królowa koniecznie chciała spróbować pizzy, wszakże miasto słynęło z tego dania w całym kraju.\n" +
+                        "\n" +
+                        "Przygotowanie potrawy dla powierzono najsłynniejszemu piekarzowi w okolicy: Raffaele Esposito, z najlepszej neapolitańskiej pizzerii: Brandi (założonej w 1780 roku!).\n" +
+                        "\n" +
+                        "Raffaele przygotował dla królowej pizzę, której podstawowymi składnikami były pomidory, ser mozzarella i bazylia. Składniki miały symbolizować barwy flagi włoskiej: zieleń, biel i czerwień. Na cześć królowej nazwał danie jej imieniem: Margherita."
+            it[prize] = 22.00
+            it[image] = "image2.jpg"
         }
 
-        PizzaSizeTable.insert {
-            it[name] = "XL"
-            it[additionalPrize] = 15.00
+
+        PizzaItemTable.insert {
+            it[title] = "Peperoni"
+            it[description] =
+                "Obok pizzy Margherita to kolejna klasyczna pizza. Pizza z salami jest uwielbiana szczególnie przez dzieci, które z reguły nie lubią, gdy jest na niej dużo dodatków."
+            it[prize] = 33.00
+            it[image] = "image1.jpg"
         }
     }
 }

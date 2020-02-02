@@ -2,8 +2,10 @@ package org.openpizza.pizza.types.model
 
 data class PizzaTypeRecord(
     val id: Int,
-    val name: String,
-    val basePrize: Double
+    val title: String,
+    val description: String,
+    val image: String,
+    val prize: Double
 )
 
 data class NewPizzaType(
